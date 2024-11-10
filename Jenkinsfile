@@ -4,17 +4,14 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
+                echo 'Instalando dependências...'
+				sh 'pip install -r requirements.txt'
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                echo 'Executando aplicação...'
+				sh 'python app.py'
             }
         }
     }
