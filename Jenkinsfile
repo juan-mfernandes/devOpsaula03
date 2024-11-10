@@ -4,19 +4,24 @@ pipeline {
 		stage('Iniciando ambiente Python') {
 			steps {
 				sh 'python3 -m venv venv'
-				sh 'source venv/bin/activate'
 			}
 		}
         stage('Build') {
             steps {
                 echo 'Instalando dependências...'
-				sh 'pip -r install requirements.txt'
+				sh '''
+					source venv/bin/activate
+					pip install -r requirements.txt'
+				'''
 			}
 		}	
         stage('Deploy') {
             steps {
                 echo 'Executando aplicação...'
-				sh 'python main.py'
+				sh ''' 
+					source venv/bin/activate
+					python main.py
+				'''
             }
         }
     }
