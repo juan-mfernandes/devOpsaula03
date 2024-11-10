@@ -7,18 +7,15 @@ pipeline {
                 echo 'Building..'
             }
         }
-  
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
             }
         }
-
-        stage('Pitagoras') {
-            steps {
-                echo 'Pitagoras teve a casa alagada e o guarda roupa quebrou a porta....'
-            }
-        }
-
     }
 }
