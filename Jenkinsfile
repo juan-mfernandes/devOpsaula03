@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Instalando dependências...'
-				sh 'pip -r install requirements.txt
+				sh 'pip -r install requirements.txt'
 			}
 		}
 		stage('Iniciando ambiente Python') {
