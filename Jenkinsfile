@@ -1,13 +1,12 @@
 pipeline {
     agent any
-
     stages {
         stage('Build') {
             steps {
                 echo 'Instalando dependências...'
-				sh 'pip install -r requirements.txt'
-            }
-        }
+				sh 'pip -r install requirements.txt
+			}
+		}
 		stage('Iniciando ambiente Python') {
 			steps {
 				sh 'pip -m venv venv'
