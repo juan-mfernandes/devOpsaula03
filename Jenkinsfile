@@ -15,18 +15,18 @@ pipeline {
             }
         }   
         stage('Deploy') {
-    steps {
-        echo 'Iniciando e testando aplicação...'
+			steps {
+				echo 'Iniciando e testando aplicação...'
        
-        sh 'source venv/bin/activate && python main.py & echo $! > server_pid.txt'
+				sh 'source venv/bin/activate && python main.py & echo $! > server_pid.txt'
         
-        // Aguarda o servidor subir e realiza testes
-        sh 'sleep 5 && curl http://localhost:5000'
+				// Aguarda o servidor subir e realiza testes
+				sh 'sleep 5 && curl http://localhost:5000'
         
-        // Encerra o servidor usando o PID
-        sh 'kill $(cat server_pid.txt) && rm server_pid.txt'
-    }
-}
-       }
+				// Encerra o servidor usando o PID
+				sh 'kill $(cat server_pid.txt) && rm server_pid.txt'
+			}
+		}
+		}
     }
 }
