@@ -3,7 +3,7 @@ pipeline {
     stages {
 		stage('Iniciando ambiente Python') {
 			steps {
-				sh 'python3 -m venv venv'
+				sh 'python -m venv venv'
 			}
 		}
         stage('Build') {
