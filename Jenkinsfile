@@ -13,11 +13,11 @@ pipeline {
                 // Ativa o ambiente virtual e instala as dependências no mesmo comando
                 sh 'source venv/bin/activate && pip install -r requirements.txt'
             }
-        }   
-        stage('Deploy') {
+        }
+		stage('Deploy') {
 			steps {
 				echo 'Iniciando e testando aplicação...'
-       
+				// Inicia o servidor em segundo plano e captura o PID
 				sh 'source venv/bin/activate && python main.py & echo $! > server_pid.txt'
         
 				// Aguarda o servidor subir e realiza testes
@@ -26,7 +26,6 @@ pipeline {
 				// Encerra o servidor usando o PID
 				sh 'kill $(cat server_pid.txt) && rm server_pid.txt'
 			}
-		}
 		}
     }
 }
