@@ -18,7 +18,7 @@ pipeline {
             steps {
                 echo 'Executando aplicação...'
                 // Ativa o ambiente virtual e executa a aplicação no mesmo comando
-                sh 'source venv/bin/activate && python main.py'
+                sh 'source venv/bin/activate && timeout 20 python main.py'
             }
         }
     }
