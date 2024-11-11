@@ -1,27 +1,24 @@
 pipeline {
     agent any
     stages {
-		stage('Iniciando ambiente Python') {
-			steps {
-				sh 'python -m venv venv'
-			}
-		}
+        stage('Iniciando ambiente Python') {
+            steps {
+                // Cria o ambiente virtual
+                sh 'python3 -m venv venv'
+            }
+        }
         stage('Build') {
             steps {
                 echo 'Instalando dependências...'
-				sh '''
-					source venv/bin/activate
-					pip install -r requirements.txt'
-				'''
-			}
-		}	
+                // Ativa o ambiente virtual e instala as dependências no mesmo comando
+                sh 'source venv/bin/activate && pip install -r requirements.txt'
+            }
+        }   
         stage('Deploy') {
             steps {
                 echo 'Executando aplicação...'
-				sh ''' 
-					source venv/bin/activate
-					python main.py
-				'''
+                // Ativa o ambiente virtual e executa a aplicação no mesmo comando
+                sh 'source venv/bin/activate && python main.py'
             }
         }
     }
